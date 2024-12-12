@@ -82,22 +82,6 @@ ggplot(species_richness_map_data, aes(x = LON, y = LAT, color = species_richness
 ```
 ![image](https://github.com/user-attachments/assets/ec6b3eca-7c0e-4470-a090-157808898852)
 
-```{r}
-species_richness_by_elevation <- species_richness_by_elevation %>%
-  mutate(elevation = cut(ELEV, breaks = seq(0, 3000, by = 500), 
-                             labels = c("0-500", "500-1000", "1000-1500", "1500-2000", "2000-2500", "2500-3000")))
-
-bin_summary <- species_richness_by_elevation %>%
-  group_by(elevation) %>%
-  summarize(avg_species_richness = mean(species_richness), .groups = "drop")
-
-# bar graph displaying species richness with elevation bands
-ggplot(bin_summary, aes(x = elevation, y = avg_species_richness, fill = elevation)) +
-  geom_bar(stat = "identity") +
-  labs(title = "Average Species Richness by Elevation", x = "Elevation", y = "Avg Species Richness") +
-  theme_minimal()
-```
-![image](https://github.com/user-attachments/assets/b8905461-efd7-4678-b56e-c60b91b8d4b8)
 
 - Conclusion
 -- Tree species richness follows distinct patterns regarding elevation gradients with low to mid elevations consisting of higher levels of species richness, and high elevations consisting of lower levels.
