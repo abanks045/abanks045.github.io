@@ -9,7 +9,9 @@
 
 - Data
 -- Using current FIA data to compare tree species richness with elevation gradients, key graphs and maps were created to better understand the relationship.
-``` 
+  
+```{r}
+
 library(dplyr)
 ## 
 ## Attaching package: 'dplyr'
@@ -46,9 +48,11 @@ ggplot(species_richness_by_elevation, aes(x = ELEV, y = species_richness)) +
   theme_minimal()
 
 ```
+
 ![image](https://github.com/user-attachments/assets/75f04fa2-9eb3-4683-bf02-fc1c7052bb28)
 
-```
+```{r}
+
 # elevation map displaying high and low elevation gradients
 ggplot(species_richness_map_data, aes(x = LON, y = LAT, color = ELEV)) +
   geom_point(alpha = 0.6, size = 1) +
@@ -59,10 +63,12 @@ ggplot(species_richness_map_data, aes(x = LON, y = LAT, color = ELEV)) +
        color = "Elevation") +
   theme_minimal() +
   coord_quickmap()
-```
-![image](https://github.com/user-attachments/assets/18b3a496-dad3-40e3-8a31-a48cd1bc4172)
 
 ```
+
+![image](https://github.com/user-attachments/assets/18b3a496-dad3-40e3-8a31-a48cd1bc4172)
+
+```{r}
 # species richness map displaying high and low levels of species richness
 ggplot(species_richness_map_data, aes(x = LON, y = LAT, color = species_richness)) +
   geom_point(alpha = 0.6, size = 1) +
@@ -76,7 +82,7 @@ ggplot(species_richness_map_data, aes(x = LON, y = LAT, color = species_richness
 ```
 ![image](https://github.com/user-attachments/assets/ec6b3eca-7c0e-4470-a090-157808898852)
 
-```
+```{r}
 species_richness_by_elevation <- species_richness_by_elevation %>%
   mutate(elevation = cut(ELEV, breaks = seq(0, 3000, by = 500), 
                              labels = c("0-500", "500-1000", "1000-1500", "1500-2000", "2000-2500", "2500-3000")))
